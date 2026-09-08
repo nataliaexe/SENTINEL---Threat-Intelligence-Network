@@ -39,7 +39,7 @@ class SSHHoneypot:
         server.bind((self.host, self.port))
         server.listen(5)
         
-        self.logger.info(f"🔒 SSH Honeypot escutando em {self.host}:{self.port}")
+        self.logger.info(f" SSH Honeypot escutando em {self.host}:{self.port}")
         
         while self.running:
             try:
@@ -49,7 +49,7 @@ class SSHHoneypot:
                 location = geo_locator.get_location(address[0])
                 location_str = f"{location.get('city', 'Unknown')}, {location.get('country', 'Unknown')}"
                 
-                self.logger.warning(f"🚨 Conexão #{self.total_connections} de {address[0]}:{address[1]} [{location_str}]")
+                self.logger.warning(f" Conexão #{self.total_connections} de {address[0]}:{address[1]} [{location_str}]")
                 
                 client_handler = threading.Thread(
                     target=self.handle_connection,
@@ -144,10 +144,10 @@ class SSHHoneypot:
             db.add(attempt)
             db.commit()
             
-            self.logger.info(f"✅ Tentativa SSH salva no banco (ID: {attempt.id})")
+            self.logger.info(f" Tentativa SSH salva no banco (ID: {attempt.id})")
             
         except Exception as e:
-            self.logger.error(f"❌ Erro ao salvar tentativa SSH: {e}")
+            self.logger.error(f" Erro ao salvar tentativa SSH: {e}")
             self.logger.error(traceback.format_exc())
         finally:
             try:
