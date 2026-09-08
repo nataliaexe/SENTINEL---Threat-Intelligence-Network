@@ -100,23 +100,23 @@ class ReportGenerator:
         
         print("""
 ╔══════════════════════════════════════╗
-║     📊 RELATÓRIO DE SEGURANÇA        ║
+║        RELATÓRIO DE SEGURANÇA        ║
 ╚══════════════════════════════════════╝
 """)
         print(f"Período: Últimas {report['period_hours']} horas")
         print(f"Total de ataques: {report['summary']['total_attacks']}")
         print(f"IPs únicos: {report['summary']['unique_ips']}")
         
-        print("\n📈 Ataques por tipo:")
+        print("\n Ataques por tipo:")
         for type_, count in report['summary']['by_type'].items():
             print(f"  - {type_}: {count}")
         
-        print("\n🌍 Ataques por país:")
+        print("\n Ataques por país:")
         for country, count in report['summary']['by_country'].items():
             print(f"  - {country}: {count}")
         
         if report['top_credentials']:
-            print("\n🔑 Credenciais mais usadas:")
+            print("\n Credenciais mais usadas:")
             for cred, count in report['top_credentials']:
                 print(f"  - {cred}: {count}x")
 
@@ -127,4 +127,4 @@ if __name__ == "__main__":
     
     if report:
         filepath = generator.save_report(report)
-        print(f"\n✅ Relatório salvo em: {filepath}")
+        print(f"\n Relatório salvo em: {filepath}")
