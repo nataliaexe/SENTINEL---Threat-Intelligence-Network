@@ -93,21 +93,21 @@ class RiskAnalyzer:
         recommendations = []
         
         if score >= 70:
-            recommendations.append("🚨 BLOQUEAR IP imediatamente")
-            recommendations.append("🔍 Investigar origem do ataque")
-            recommendations.append("📊 Reportar para threat intelligence")
+            recommendations.append(" BLOQUEAR IP imediatamente")
+            recommendations.append(" Investigar origem do ataque")
+            recommendations.append(" Reportar para threat intelligence")
         elif score >= 40:
-            recommendations.append("⚠️ Monitorar IP de perto")
-            recommendations.append("🔒 Reforçar autenticação")
+            recommendations.append(" Monitorar IP de perto")
+            recommendations.append(" Reforçar autenticação")
         else:
-            recommendations.append("📝 Registrar e continuar monitorando")
+            recommendations.append(" Registrar e continuar monitorando")
         
         if attack_data.get('honeypot_type') == 'ssh':
-            recommendations.append("🔑 Implementar 2FA")
-            recommendations.append("🚫 Desabilitar login como root")
+            recommendations.append(" Implementar 2FA")
+            recommendations.append(" Desabilitar login como root")
         elif attack_data.get('honeypot_type') == 'http':
-            recommendations.append("🛡️ Atualizar WAF")
-            recommendations.append("📝 Revisar código para vulnerabilidades")
+            recommendations.append(" Atualizar WAF")
+            recommendations.append(" Revisar código para vulnerabilidades")
         
         return recommendations
 
