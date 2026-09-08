@@ -11,6 +11,19 @@
 
 [![Live Demo](https://img.shields.io/badge/Live_Demo-Acesse_Aqui-silver)](https://sentinel.onrender.com)
 
+
+##  Live Demo
+
+O projeto está rodando em tempo real no Render:
+
+| Interface | Link |
+|-----------|------|
+| Landing Page | [Acessar](https://sentinel-threat-intelligence-network.onrender.com/) |
+| Dashboard | [Acessar](https://sentinel-threat-intelligence-network.onrender.com/dashboard) |
+| API Stats | [Acessar](https://sentinel-threat-intelligence-network.onrender.com/api/stats) |
+| Documentação | [Acessar](https://sentinel-threat-intelligence-network.onrender.com/docs) |
+
+> Nota: O servidor gratuito do Render entra em modo de hibernação após 15 minutos sem atividade. A primeira requisição pode demorar 30-60 segundos para "acordar" o servidor.
 ---
 
 ## Índice
