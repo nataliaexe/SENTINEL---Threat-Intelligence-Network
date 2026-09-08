@@ -38,12 +38,12 @@ class HTTPHoneypot:
         server.bind((self.host, self.port))
         server.listen(5)
         
-        self.logger.info(f"🌐 HTTP Honeypot escutando em {self.host}:{self.port}")
+        self.logger.info(f" HTTP Honeypot escutando em {self.host}:{self.port}")
         
         while self.running:
             try:
                 client, address = server.accept()
-                self.logger.warning(f"🚨 Conexão HTTP de {address[0]}:{address[1]}")
+                self.logger.warning(f" Conexão HTTP de {address[0]}:{address[1]}")
                 
                 client_handler = threading.Thread(
                     target=self.handle_connection,
@@ -94,7 +94,7 @@ class HTTPHoneypot:
             method = parts[0]
             path = parts[1]
             
-            self.logger.info(f"📝 Request: {method} {path} de {address[0]}")
+            self.logger.info(f" Request: {method} {path} de {address[0]}")
             
             # SEMPRE registrar a tentativa
             self.log_attempt(address, method, path, request_text)
@@ -140,10 +140,10 @@ class HTTPHoneypot:
             db.add(attempt)
             db.commit()
             
-            self.logger.info(f"✅ Tentativa HTTP salva no banco (ID: {attempt.id})")
+            self.logger.info(f" Tentativa HTTP salva no banco (ID: {attempt.id})")
             
         except Exception as e:
-            self.logger.error(f"❌ Erro ao salvar tentativa HTTP: {e}")
+            self.logger.error(f" Erro ao salvar tentativa HTTP: {e}")
             self.logger.error(traceback.format_exc())
         finally:
             try:
@@ -194,7 +194,7 @@ class HTTPHoneypot:
                     break
         
         if detected_attacks:
-            self.logger.warning(f"⚠️ Ataques detectados de {address[0]}: {', '.join(detected_attacks)}")
+            self.logger.warning(f" Ataques detectados de {address[0]}: {', '.join(detected_attacks)}")
             
             # Atualizar o último registro com o tipo de ataque
             try:
@@ -208,9 +208,9 @@ class HTTPHoneypot:
                     last_attempt.payload = f"{method} {path} - {', '.join(detected_attacks)}"
                     last_attempt.risk_score = 50.0 if len(detected_attacks) > 1 else 30.0
                     db.commit()
-                    self.logger.info(f"✅ Ataque atualizado no banco (ID: {last_attempt.id})")
+                    self.logger.info(f" Ataque atualizado no banco (ID: {last_attempt.id})")
             except Exception as e:
-                self.logger.error(f"❌ Erro ao atualizar ataque: {e}")
+                self.logger.error(f" Erro ao atualizar ataque: {e}")
             finally:
                 try:
                     db.close()
