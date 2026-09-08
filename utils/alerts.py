@@ -34,7 +34,7 @@ class AlertSystem:
             return
         
         embed = {
-            "title": "🚨 Novo Ataque Detectado!",
+            "title": " Novo Ataque Detectado!",
             "color": 15158332,  # Vermelho
             "fields": [
                 {"name": "IP", "value": attack_data.get('source_ip', 'Unknown'), "inline": True},
@@ -61,7 +61,7 @@ class AlertSystem:
                 timeout=5
             )
             if response.status_code == 204:
-                self.logger.info("✅ Alerta enviado para Discord")
+                self.logger.info(" Alerta enviado para Discord")
         except Exception as e:
             self.logger.error(f"❌ Erro ao enviar alerta: {e}")
     
@@ -71,19 +71,19 @@ class AlertSystem:
             return
         
         message = f"""
-🚨 *NOVO ATAQUE DETECTADO*
+ *NOVO ATAQUE DETECTADO*
 
-🌐 *IP:* `{attack_data.get('source_ip', 'Unknown')}`
-🔌 *Porta:* `{attack_data.get('source_port', 'Unknown')}`
-📡 *Protocolo:* `{attack_data.get('protocol', 'Unknown')}`
-👤 *Usuário:* `{attack_data.get('username', 'N/A')}`
-🔑 *Senha:* `{attack_data.get('password', 'N/A')}`
-📍 *Localização:* `{attack_data.get('city', 'Unknown')}, {attack_data.get('country', 'Unknown')}`
-⏰ *Tempo:* `{datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')}`
+ *IP:* `{attack_data.get('source_ip', 'Unknown')}`
+ *Porta:* `{attack_data.get('source_port', 'Unknown')}`
+ *Protocolo:* `{attack_data.get('protocol', 'Unknown')}`
+ *Usuário:* `{attack_data.get('username', 'N/A')}`
+ *Senha:* `{attack_data.get('password', 'N/A')}`
+ *Localização:* `{attack_data.get('city', 'Unknown')}, {attack_data.get('country', 'Unknown')}`
+ *Tempo:* `{datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')}`
 """
         
         if attack_data.get('payload'):
-            message += f"\n📝 *Payload:* `{attack_data['payload'][:100]}`"
+            message += f"\n *Payload:* `{attack_data['payload'][:100]}`"
         
         try:
             url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
@@ -97,9 +97,9 @@ class AlertSystem:
                 timeout=5
             )
             if response.status_code == 200:
-                self.logger.info("✅ Alerta enviado para Telegram")
+                self.logger.info(" Alerta enviado para Telegram")
         except Exception as e:
-            self.logger.error(f"❌ Erro ao enviar alerta Telegram: {e}")
+            self.logger.error(f" Erro ao enviar alerta Telegram: {e}")
 
 # Singleton
 alert_system = AlertSystem()
