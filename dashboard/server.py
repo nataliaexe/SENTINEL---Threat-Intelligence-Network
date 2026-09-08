@@ -1382,7 +1382,7 @@ DASHBOARD = """
         // ============= SENTINEL FUNCTIONS =============
         async function controlSystem(action, service) {
             try {
-                const response = await fetch('http://localhost:8000/api/control', {
+                const response = await fetch('/api/api/control', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ action, service })
@@ -1396,7 +1396,7 @@ DASHBOARD = """
         
         async function exportData(format) {
             try {
-                const response = await fetch(`http://localhost:8000/api/export?format=${format}`);
+                const response = await fetch(`/api/api/export?format=${format}`);
                 const data = await response.json();
                 
                 if (format === 'json') {
@@ -1435,7 +1435,7 @@ DASHBOARD = """
         
         async function updateStats() {
             try {
-                const response = await fetch('http://localhost:8000/api/stats');
+                const response = await fetch('/api/api/stats');
                 const data = await response.json();
                 document.getElementById('stats').innerHTML = `
                     <div class="stat-card">
@@ -1470,7 +1470,7 @@ DASHBOARD = """
         
         async function updateAttacks() {
             try {
-                const response = await fetch('http://localhost:8000/api/attacks?limit=20');
+                const response = await fetch('/api/api/attacks?limit=20');
                 const attacks = await response.json();
                 if (attacks.length === 0) {
                     document.getElementById('attacks').innerHTML = '<div class="empty-state">No attacks detected yet</div>';
