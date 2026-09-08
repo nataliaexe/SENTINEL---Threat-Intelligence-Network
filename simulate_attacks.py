@@ -5,7 +5,7 @@ from datetime import datetime
 
 def simulate_ssh_bruteforce():
     """Simular ataque de força bruta SSH"""
-    print("🚀 Simulando ataque de força bruta SSH...")
+    print(" Simulando ataque de força bruta SSH...")
     
     users = ['root', 'admin', 'test', 'ubuntu', 'oracle', 'postgres']
     passwords = ['123456', 'password', 'admin', 'root', 'toor', 'qwerty']
@@ -47,11 +47,11 @@ def simulate_ssh_bruteforce():
         
         time.sleep(random.uniform(0.5, 1.5))
     
-    print("✅ Ataque SSH simulado!")
+    print(" Ataque SSH simulado!")
 
 def simulate_http_attacks():
     """Simular ataques HTTP"""
-    print("\n🚀 Simulando ataques HTTP...")
+    print("\n Simulando ataques HTTP...")
     
     attacks = [
         "/search?q=<script>alert('xss')</script>",
@@ -87,13 +87,13 @@ def simulate_http_attacks():
         
         time.sleep(0.5)
     
-    print("✅ Ataques HTTP simulados!")
+    print(" Ataques HTTP simulados!")
 
 if __name__ == "__main__":
     print("=" * 60)
-    print("🎯 SIMULADOR DE ATAQUES - SENTINEL")
+    print(" SIMULADOR DE ATAQUES - SENTINEL")
     print("=" * 60)
-    print(f"⏰ Início: {datetime.now().strftime('%H:%M:%S')}")
+    print(f" Início: {datetime.now().strftime('%H:%M:%S')}")
     print()
     
     # Simular ataques SSH
@@ -104,8 +104,8 @@ if __name__ == "__main__":
     
     print()
     print("=" * 60)
-    print("✅ TODOS OS ATAQUES SIMULADOS!")
-    print("📊 Verifique os resultados com:")
+    print(" TODOS OS ATAQUES SIMULADOS!")
+    print(" Verifique os resultados com:")
     print("   python3 sentinel_cli.py status")
     print("   python3 sentinel_cli.py attacks")
     print("=" * 60)
