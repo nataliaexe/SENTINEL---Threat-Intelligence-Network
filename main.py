@@ -18,69 +18,73 @@ def start_ssh_honeypot():
         honeypot = SSHHoneypot(port=2222)
         honeypot.start()
     except Exception as e:
-        print(f" SSH Honeypot: {e}")
+        print(f"SSH Honeypot error: {e}")
 
 def start_http_honeypot():
     try:
         honeypot = HTTPHoneypot(port=8080)
         honeypot.start()
     except Exception as e:
-        print(f" HTTP Honeypot: {e}")
+        print(f"HTTP Honeypot error: {e}")
 
-def start_api():
-    # Importar API
-    from core.api import app
+def start_server():
+    from core.api import app as api_app
+    from fastapi import FastAPI
     from fastapi.responses import HTMLResponse
     
-    # Importar dashboard
+    main_app = FastAPI(title="Sentinel", version="1.0.0")
+    
     dashboard_path = os.path.join(
         os.path.dirname(os.path.abspath(__file__)), 
         "dashboard", 
         "server.py"
     )
     
-    if os.path.exists(dashboard_path):
-        spec = importlib.util.spec_from_file_location("dashboard_server", dashboard_path)
-        dashboard_module = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(dashboard_module)
-        
-        @app.get("/", response_class=HTMLResponse)
-        async def landing_page():
-            return dashboard_module.LANDING_PAGE
-        
-        @app.get("/dashboard", response_class=HTMLResponse)
-        async def dashboard():
-            return dashboard_module.DASHBOARD
-        
-        print(" Dashboard integrado na API")
+    spec = importlib.util.spec_from_file_location("dashboard_server", dashboard_path)
+    dashboard_module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(dashboard_module)
     
-    uvicorn.run(app, host="0.0.0.0", port=PORT)
+    @main_app.get("/", response_class=HTMLResponse)
+    async def landing():
+        return dashboard_module.LANDING_PAGE
+    
+    @main_app.get("/dashboard", response_class=HTMLResponse)
+    async def dashboard():
+        return dashboard_module.DASHBOARD
+    
+    main_app.mount("/api", api_app)
+    
+    print(f"Dashboard disponivel em /")
+    print(f"Dashboard disponivel em /dashboard")
+    print(f"API disponivel em /api/*")
+    
+    uvicorn.run(main_app, host="0.0.0.0", port=PORT)
 
 if __name__ == "__main__":
     print("""
-    ╔═══════════════════════════════════════╗
-    ║        SENTINEL - Starting...         ║
-    ╚═══════════════════════════════════════╝
+    ========================================
+           SENTINEL - Starting...
+    ========================================
     """)
     
-    print(f" API + Dashboard na porta {PORT}")
-    print(" SSH Honeypot na porta 2222 (interno)")
-    print(" HTTP Honeypot na porta 8080 (interno)")
+    print(f"Servidor na porta {PORT}")
+    print("SSH Honeypot na porta 2222 (interno)")
+    print("HTTP Honeypot na porta 8080 (interno)")
     print("")
     
     ssh_thread = threading.Thread(target=start_ssh_honeypot, daemon=True)
     ssh_thread.start()
-    print(" SSH Honeypot iniciado")
+    print("SSH Honeypot iniciado")
     
     http_thread = threading.Thread(target=start_http_honeypot, daemon=True)
     http_thread.start()
-    print(" HTTP Honeypot iniciado")
+    print("HTTP Honeypot iniciado")
     
     time.sleep(2)
     
     try:
-        print(f" Servidor iniciado na porta {PORT}")
-        start_api()
+        print(f"Servidor iniciado na porta {PORT}")
+        start_server()
     except KeyboardInterrupt:
-        print("\n Sentinel encerrado")
+        print("\nSentinel encerrado")
         sys.exit(0)
