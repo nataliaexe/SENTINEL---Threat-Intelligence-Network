@@ -519,7 +519,7 @@ LANDING_PAGE = """
             <h2 class="section-title">Funcionalidades</h2>
             <div class="features">
                 <div class="feature">
-                    <div class="feature-icon">🔒</div>
+                    <div class="feature-icon"></div>
                     <h3>Honeypot SSH</h3>
                     <p>Simula um servidor SSH vulnerável que atrai atacantes tentando 
                     adivinhar credenciais. Captura usuários, senhas e IPs de origem 
@@ -527,7 +527,7 @@ LANDING_PAGE = """
                 </div>
                 
                 <div class="feature">
-                    <div class="feature-icon">🌐</div>
+                    <div class="feature-icon"></div>
                     <h3>Honeypot HTTP</h3>
                     <p>Finge ser um servidor web com vulnerabilidades conhecidas. 
                     Detecta SQL Injection, XSS, Path Traversal e outros ataques web 
@@ -535,14 +535,14 @@ LANDING_PAGE = """
                 </div>
                 
                 <div class="feature">
-                    <div class="feature-icon">📊</div>
+                    <div class="feature-icon"></div>
                     <h3>Análise em Tempo Real</h3>
                     <p>Dashboard ao vivo com estatísticas, terminal integrado e 
                     monitoramento contínuo de todas as atividades maliciosas.</p>
                 </div>
                 
                 <div class="feature">
-                    <div class="feature-icon">🧠</div>
+                    <div class="feature-icon"></div>
                     <h3>Inteligência de Ameaças</h3>
                     <p>Coleta automática de dados sobre atacantes, incluindo 
                     geolocalização, padrões de ataque e credenciais mais usadas 
@@ -550,14 +550,14 @@ LANDING_PAGE = """
                 </div>
                 
                 <div class="feature">
-                    <div class="feature-icon">🛡️</div>
+                    <div class="feature-icon"></div>
                     <h3>Defesa Ativa</h3>
                     <p>Aprenda como atacantes operam e fortaleça suas defesas 
                     entendendo as técnicas mais comuns de invasão e exploração.</p>
                 </div>
                 
                 <div class="feature">
-                    <div class="feature-icon">📈</div>
+                    <div class="feature-icon"></div>
                     <h3>Exportação de Dados</h3>
                     <p>Exporte todos os dados coletados em JSON ou CSV para análise 
                     forense, documentação de incidentes e relatórios detalhados.</p>
@@ -680,11 +680,11 @@ LANDING_PAGE = """
                 
                 <div class="contact-links">
                     <a href="https://github.com/SEU_USUARIO_AQUI" target="_blank" class="contact-link">
-                        <span class="contact-icon">💻</span>
+                        <span class="contact-icon"></span>
                         GitHub
                     </a>
                     <a href="mailto:SEU_EMAIL_AQUI" class="contact-link">
-                        <span class="contact-icon">✉️</span>
+                        <span class="contact-icon"></span>
                         Email
                     </a>
                 </div>
