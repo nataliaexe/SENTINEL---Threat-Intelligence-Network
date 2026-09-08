@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: sentinel
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python3 main.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: PORT
+        value: 8000
+      - key: HONEYPOT_PORT
+        value: 2222
+      - key: API_PORT
+        value: 8000
+    plan: free
