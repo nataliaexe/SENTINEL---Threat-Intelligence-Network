@@ -4,7 +4,7 @@ import json
 from datetime import datetime
 
 def monitor_attacks():
-    print("🔍 Monitorando ataques em tempo real...")
+    print(" Monitorando ataques em tempo real...")
     print("=" * 60)
     
     last_count = 0
@@ -18,13 +18,13 @@ def monitor_attacks():
             # Verificar se há novos ataques
             if stats['total_attacks'] > last_count:
                 new_attacks = stats['total_attacks'] - last_count
-                print(f"\n🚨 {new_attacks} novo(s) ataque(s) detectado(s)!")
-                print(f"📊 Total: {stats['total_attacks']}")
-                print(f"🌍 IPs únicos: {stats['unique_ips']}")
-                print(f"⚡ Últimos 5 min: {stats['recent_attacks_5min']}")
+                print(f"\n {new_attacks} novo(s) ataque(s) detectado(s)!")
+                print(f" Total: {stats['total_attacks']}")
+                print(f" IPs únicos: {stats['unique_ips']}")
+                print(f" Últimos 5 min: {stats['recent_attacks_5min']}")
                 
                 if stats['top_usernames']:
-                    print("\n👤 Usuários mais tentados:")
+                    print("\n Usuários mais tentados:")
                     for user, count in stats['top_usernames']:
                         if user:
                             print(f"   - {user}: {count} tentativas")
